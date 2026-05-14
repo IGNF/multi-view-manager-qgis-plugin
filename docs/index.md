@@ -30,8 +30,7 @@
   <h2 id="1-prérequis" style="color: #00ADC5" >1. Prérequis</h2>
 </div>  
 
-Version de QGIS 3 : 3.28 ou supérieure.  
-Attention, ce plugin ne fonctionne pas avec la version 4 de QGIS.  
+Version de QGIS 3 : 3.28 ou supérieure.    
 L’installation du plugin Vues nécessite d’avoir au préalable installé le plugin Maître.  
 
 <div  style="background-color: white; border: 1px solid black; padding: 10px; text-align: justify;">
