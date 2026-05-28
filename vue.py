@@ -46,6 +46,7 @@ class Vue:
 
         # index du bouton actif dans le layout (pour sauvegarder la position dans le fichier pos.txt)
 
+
         self.index = None
         self.rep_vues = None
         self.path_xml = None
@@ -63,6 +64,7 @@ class Vue:
         self.btn_droit = None
         self.btn_plus = None
         self.btn_importer = None
+        self.btn_exporter = None
         self.btn_aide = None
 
         self.first_start = True
@@ -129,6 +131,7 @@ class Vue:
         self.icon_fleche_gauche = QIcon(str(Path(os.path.dirname(__file__)) / "icons"/"fleche_gauche.png"))
         self.icon_modifier = QIcon(str(Path(os.path.dirname(__file__)) / "icons" / "sauvegarder.png"))
         self.icon_importer = QIcon(str(Path(os.path.dirname(__file__))/ "icons"/ "importer.png"))
+        self.icon_exporter = QIcon(str(Path(os.path.dirname(__file__)) / "icons" / "exporter.png"))
         self.icon_aide = QIcon(str(Path(os.path.dirname(__file__)) / "icons" / "aide.png"))
 
         self.list_nom_btn_defaut = self.init_bouton_defaut()
@@ -403,6 +406,15 @@ class Vue:
                 else:
                     self.on_change_vue(self.listbtn[0])
 
+    def on_exporter_vue(self):
+        dossier = QFileDialog.getExistingDirectory(None, "Choisissez un dossier de destination")
+        if dossier:
+            dst = os.path.join(dossier, "VUES")
+            shutil.copytree(self.get_dossier_vues(), dst,dirs_exist_ok=True) # copytree pour un dossier
+        else:
+            QMessageBox.warning(None, "Annulé", "Aucun dossier sélectionné.")
+
+
     def on_aide(self):
         dlgAProposDe = QDialog()
         loadUi(os.path.dirname(__file__) + "/aproposde.ui", dlgAProposDe)
@@ -593,6 +605,7 @@ class Vue:
         self.btn_gauche = QPushButton(self.icon_fleche_gauche, None)
         self.btn_modifie = QPushButton(self.icon_modifier, None)
         self.btn_importer = QPushButton(self.icon_importer, None)
+        self.btn_exporter = QPushButton(self.icon_exporter, None)
         self.btn_aide = QPushButton(self.icon_aide, None)
 
         self.btn_plus.setObjectName("plus")
@@ -600,6 +613,7 @@ class Vue:
         self.btn_gauche.setObjectName("gauche")
         self.btn_modifie.setObjectName("modifie")
         self.btn_importer.setObjectName("importer")
+        self.btn_exporter.setObjectName("exporter")
         self.btn_aide.setObjectName("aide")
 
         self.btn_plus.setFixedHeight(HAUTEUR_BTN)
@@ -607,9 +621,10 @@ class Vue:
         self.btn_gauche.setFixedHeight(HAUTEUR_BTN)
         self.btn_modifie.setFixedHeight(HAUTEUR_BTN)
         self.btn_importer.setFixedHeight(HAUTEUR_BTN)
+        self.btn_exporter.setFixedHeight(HAUTEUR_BTN)
         self.btn_aide.setFixedHeight(HAUTEUR_BTN)
 
-        self.list_bouton_defaut = [self.btn_plus,self.btn_gauche,self.btn_droit,self.btn_modifie,self.btn_importer,self.btn_aide]
+        self.list_bouton_defaut = [self.btn_plus,self.btn_gauche,self.btn_droit,self.btn_modifie,self.btn_importer,self.btn_exporter,self.btn_aide]
 
         self.btn_plus.clicked.connect(self.on_ajout_onglet)
         self.btn_plus.setToolTip("Ajouter un onglet")
@@ -621,6 +636,8 @@ class Vue:
         self.btn_gauche.setToolTip("Déplacer l'onglet actif vers la gauche")
         self.btn_importer.clicked.connect(self.on_importer_vue)
         self.btn_importer.setToolTip("Importer une vue")
+        self.btn_exporter.clicked.connect(self.on_exporter_vue)
+        self.btn_exporter.setToolTip("Exporter une vue")
         self.btn_aide.clicked.connect(self.on_aide)
         self.btn_aide.setToolTip("Afficher l'aide")
 
@@ -628,7 +645,9 @@ class Vue:
                                     self.btn_droit.objectName(),
                                     self.btn_gauche.objectName(),
                                     self.btn_modifie.objectName(),
-                                    self.btn_importer.objectName()]
+                                    self.btn_importer.objectName(),
+                                    self.btn_exporter.objectName(),
+                                    self.btn_aide.objectName()]
         return self.list_nom_btn_defaut
 
     def add_bouton_defaut(self):
