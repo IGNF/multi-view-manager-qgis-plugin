@@ -7,4 +7,8 @@ VUE_DEFAUT = "courant"
 
 # une ou plusieurs valeurs parmi : mCoordsEdit, mScaleWidget, mMagnifierWidget, mRotationLabel, mRotationEdit,
 # mRenderSuppressionCBox, mOntheFlyProjectionStatusButton, mMessageLogViewerButton
-LIST_VUES_QGIS_A_GARDER = ["mOntheFlyProjectionStatusButton","mScaleWidget"]
+
+# LIST_VUES_QGIS_A_GARDER = ["mOntheFlyProjectionStatusButton","mScaleWidget"]
+LIST_VUES_QGIS_A_GARDER = ["mOntheFlyProjectionStatusButton","mScaleWidget",
+                           "mCoordsEdit","mRotationLabel","mRotationEdit",
+                           "mRenderSuppressionCBox","mMagnifierWidget","mMessageLogViewerButton"]
