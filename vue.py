@@ -21,6 +21,8 @@
  *                                                                         *
  ***************************************************************************/
 """
+import webbrowser
+
 from qgis.PyQt.QtCore import  QTimer
 from qgis.PyQt.QtGui import QFontMetrics,QIcon
 from qgis.PyQt.QtWidgets import QPushButton, QHBoxLayout, QWidget, QScrollArea, QMenu,QInputDialog,QMessageBox
@@ -29,6 +31,7 @@ from qgis.core import QgsProject,QgsMapLayer
 
 from .constantes import *
 from .dlg_import import *
+from .mapping_version import *
 
 from copy import copy
 import xml.etree.ElementTree as ET
@@ -42,6 +45,7 @@ class Vue:
     def __init__(self, iface):
 
         # index du bouton actif dans le layout (pour sauvegarder la position dans le fichier pos.txt)
+
         self.index = None
         self.rep_vues = None
         self.path_xml = None
@@ -59,6 +63,7 @@ class Vue:
         self.btn_droit = None
         self.btn_plus = None
         self.btn_importer = None
+        self.btn_aide = None
 
         self.first_start = True
 
@@ -122,8 +127,9 @@ class Vue:
         self.icon_plus = QIcon(str(Path(os.path.dirname(__file__)) / "icons" / "plus.png"))
         self.icon_fleche_droite = QIcon(str(Path(os.path.dirname(__file__)) / "icons"/"fleche_droite.png"))
         self.icon_fleche_gauche = QIcon(str(Path(os.path.dirname(__file__)) / "icons"/"fleche_gauche.png"))
-        self.icon_modfie = QIcon(str(Path(os.path.dirname(__file__)) / "icons"/"sauvegarder.png"))
+        self.icon_modifier = QIcon(str(Path(os.path.dirname(__file__)) / "icons" / "sauvegarder.png"))
         self.icon_importer = QIcon(str(Path(os.path.dirname(__file__))/ "icons"/ "importer.png"))
+        self.icon_aide = QIcon(str(Path(os.path.dirname(__file__)) / "icons" / "aide.png"))
 
         self.list_nom_btn_defaut = self.init_bouton_defaut()
 
@@ -397,6 +403,16 @@ class Vue:
                 else:
                     self.on_change_vue(self.listbtn[0])
 
+    def on_aide(self):
+        dlgAProposDe = QDialog()
+        loadUi(os.path.dirname(__file__) + "/aproposde.ui", dlgAProposDe)
+        dlgAProposDe.setWindowFlags(WindowStaysOnTopHint | WindowCloseButtonHint)
+        dlgAProposDe.pushButtonAffichedoc.clicked.connect(self.afficheDoc)
+        dlgAProposDe.exec_()
+
+    def afficheDoc(self):
+        webbrowser.open("https://ignf.github.io/vues-qgis-plugin/")
+
     def on_modifie_vue(self):
         if self.onglet_actif is None:
             QMessageBox.warning(None, "Attention",
@@ -405,11 +421,11 @@ class Vue:
 
         reponse = QMessageBox.warning(None, "Attention",
                                       f"Voulez vous vraiment appliquer la nouvelle vue à l'onglet <br><b>{self.onglet_actif}<\b><\br> ?",
-                                      QMessageBox.Yes | QMessageBox.No)
-        if reponse == QMessageBox.No:
+                                      Yes | No)
+        if reponse == No:
             return
 
-        if reponse == QMessageBox.Yes:
+        if reponse == Yes:
             # sauvegarde des styles de tous les layers ajoutés
             self.sauve_style_layer_visible()
 
@@ -575,20 +591,25 @@ class Vue:
         self.btn_plus = QPushButton(self.icon_plus, None)
         self.btn_droit = QPushButton(self.icon_fleche_droite, None)
         self.btn_gauche = QPushButton(self.icon_fleche_gauche, None)
-        self.btn_modifie = QPushButton(self.icon_modfie, None)
+        self.btn_modifie = QPushButton(self.icon_modifier, None)
         self.btn_importer = QPushButton(self.icon_importer, None)
+        self.btn_aide = QPushButton(self.icon_aide, None)
+
         self.btn_plus.setObjectName("plus")
         self.btn_droit.setObjectName("droite")
         self.btn_gauche.setObjectName("gauche")
         self.btn_modifie.setObjectName("modifie")
         self.btn_importer.setObjectName("importer")
+        self.btn_aide.setObjectName("aide")
+
         self.btn_plus.setFixedHeight(HAUTEUR_BTN)
         self.btn_droit.setFixedHeight(HAUTEUR_BTN)
         self.btn_gauche.setFixedHeight(HAUTEUR_BTN)
         self.btn_modifie.setFixedHeight(HAUTEUR_BTN)
         self.btn_importer.setFixedHeight(HAUTEUR_BTN)
+        self.btn_aide.setFixedHeight(HAUTEUR_BTN)
 
-        self.list_bouton_defaut = [self.btn_plus,self.btn_gauche,self.btn_droit,self.btn_modifie,self.btn_importer]
+        self.list_bouton_defaut = [self.btn_plus,self.btn_gauche,self.btn_droit,self.btn_modifie,self.btn_importer,self.btn_aide]
 
         self.btn_plus.clicked.connect(self.on_ajout_onglet)
         self.btn_plus.setToolTip("Ajouter un onglet")
@@ -600,6 +621,8 @@ class Vue:
         self.btn_gauche.setToolTip("Déplacer l'onglet actif vers la gauche")
         self.btn_importer.clicked.connect(self.on_importer_vue)
         self.btn_importer.setToolTip("Importer une vue")
+        self.btn_aide.clicked.connect(self.on_aide)
+        self.btn_aide.setToolTip("Afficher l'aide")
 
         self.list_nom_btn_defaut = [self.btn_plus.objectName(),
                                     self.btn_droit.objectName(),

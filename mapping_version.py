@@ -1,12 +1,12 @@
 from qgis.PyQt.QtCore import Qt
-from qgis.PyQt.QtWidgets import QSizePolicy,QFrame,QFileDialog,QDialog
+from qgis.PyQt.QtWidgets import QSizePolicy,QFrame,QFileDialog,QDialog,QMessageBox
 
 # QT6
 try :
     # Dialog = Qt.WindowType.Dialog
-    # WindowCloseButtonHint = Qt.WindowType.WindowCloseButtonHint
+    WindowCloseButtonHint = Qt.WindowType.WindowCloseButtonHint
     # WindowTitleHint = Qt.WindowType.WindowTitleHint
-    # WindowStaysOnTopHint = Qt.WindowType.WindowStaysOnTopHint
+    WindowStaysOnTopHint = Qt.WindowType.WindowStaysOnTopHint
     Checked = Qt.CheckState.Checked
     Unchecked = Qt.CheckState.Unchecked
     # ItemIsEnabled = Qt.ItemFlag.ItemIsEnabled
@@ -29,13 +29,15 @@ try :
     DontResolveSymlinks = QFileDialog.Option.DontResolveSymlinks
     Accept = QFileDialog.DialogLabel.Accept
     Accepted = QFileDialog.DialogCode.Accepted
+    No = QMessageBox.StandardButton.No
+    Yes = QMessageBox.StandardButton.Yes
 
 # QT5
 except :
     # Dialog = Qt.Dialog
-    # WindowCloseButtonHint = Qt.WindowCloseButtonHint
+    WindowCloseButtonHint = Qt.WindowCloseButtonHint
     # WindowTitleHint = Qt.WindowTitleHint
-    # WindowStaysOnTopHint = Qt.WindowStaysOnTopHint
+    WindowStaysOnTopHint = Qt.WindowStaysOnTopHint
     Checked = Qt.Checked
     Unchecked = Qt.Unchecked
     # ItemIsEnabled = Qt.ItemIsEnabled
@@ -58,3 +60,5 @@ except :
     DontResolveSymlinks = Qt.DontResolveSymlinks
     Accept = QFileDialog.Accept
     Accepted = QDialog.Accepted
+    No = QMessageBox.No
+    Yes = QMessageBox.Yes
