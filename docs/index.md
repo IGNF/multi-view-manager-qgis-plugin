@@ -5,7 +5,7 @@
 <tbody>
 <tr>
 <td rowspan="2">
-  <img src="images/image0.jpg"
+  <img src="images/Image0.jpg"
   style="width:1.38681in;height:1.47153in" alt="logo_IGN_pour_lettre" />
 </td>
 
