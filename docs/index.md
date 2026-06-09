@@ -1,6 +1,6 @@
 # Plugin QGis Vues
 
-## Version 1.4.1 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 16/03/2026 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; IGN - DTSO 
+## Version 1.4.3 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 16/03/2026 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; IGN - DTSO 
 
 <div  style="text-align: left;"> 
 	<img  src="Image0.jpg"  height = 110/> 
@@ -31,7 +31,7 @@
 </div>  
 
 Version de QGIS 3 : 3.28 ou supérieure.    
-L’installation du plugin Vues nécessite d’avoir au préalable installé le plugin Maître.  
+
 
 <div  style="background-color: white; border: 1px solid black; padding: 10px; text-align: justify;">
   <h2 id="2-résumé" style="color: #00ADC5">2. Résumé</h2>
