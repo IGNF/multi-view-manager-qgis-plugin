@@ -7,15 +7,16 @@ name=IGN Vues
 qgisMinimumVersion=3.0
 qgisMaximumVersion=4.99
 description=Gestionnaire de vues
-version=1.4.2
+version=1.4.3
 author=Gérôme PECHEUR (IGN)
 email=gerome.pecheur@ign.fr
 license=GNU AGPL v3
 
 about=Ce gestionnaire permet de passer d'une vue à une autre, d'en ajouter, d'en supprimer et de les organiser
 
-tracker=http://bugs
-repository=http://repo
+tracker=https://github.com/IGNF/vues-qgis-plugin/issues
+repository=https://github.com/IGNF/vues-qgis-plugin
+homepage=https://ignf.github.io/vues-qgis-plugin/
 # End of mandatory metadata
 
 # Recommended items:
@@ -27,7 +28,6 @@ changelog=  Version compatible QGIS3 et QGIS4
 # Tags are comma separated with spaces allowed
 tags=python
 
-homepage=http://homepage
 category=Plugins
 icon=icons/icon_principal.png
 # experimental flag

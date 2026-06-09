@@ -21,6 +21,8 @@
  *                                                                         *
  ***************************************************************************/
 """
+import webbrowser
+
 from qgis.PyQt.QtCore import  QTimer
 from qgis.PyQt.QtGui import QFontMetrics,QIcon
 from qgis.PyQt.QtWidgets import QPushButton, QHBoxLayout, QWidget, QScrollArea, QMenu,QInputDialog,QMessageBox
@@ -29,6 +31,7 @@ from qgis.core import QgsProject,QgsMapLayer
 
 from .constantes import *
 from .dlg_import import *
+from .mapping_version import *
 
 from copy import copy
 import xml.etree.ElementTree as ET
@@ -42,10 +45,11 @@ class Vue:
     def __init__(self, iface):
 
         # index du bouton actif dans le layout (pour sauvegarder la position dans le fichier pos.txt)
+
+
         self.index = None
         self.rep_vues = None
         self.path_xml = None
-        # self.filter_clic_droit = ClicDroit(self)
 
         self.iface = iface
         self.layer = self.iface.activeLayer()
@@ -58,9 +62,10 @@ class Vue:
         self.btn_modifie = None
         self.btn_gauche = None
         self.btn_droit = None
-        # self.btn_moins = None
         self.btn_plus = None
         self.btn_importer = None
+        self.btn_exporter = None
+        self.btn_aide = None
 
         self.first_start = True
 
@@ -124,8 +129,10 @@ class Vue:
         self.icon_plus = QIcon(str(Path(os.path.dirname(__file__)) / "icons" / "plus.png"))
         self.icon_fleche_droite = QIcon(str(Path(os.path.dirname(__file__)) / "icons"/"fleche_droite.png"))
         self.icon_fleche_gauche = QIcon(str(Path(os.path.dirname(__file__)) / "icons"/"fleche_gauche.png"))
-        self.icon_modfie = QIcon(str(Path(os.path.dirname(__file__)) / "icons"/"modifie.png"))
+        self.icon_modifier = QIcon(str(Path(os.path.dirname(__file__)) / "icons" / "sauvegarder.png"))
         self.icon_importer = QIcon(str(Path(os.path.dirname(__file__))/ "icons"/ "importer.png"))
+        self.icon_exporter = QIcon(str(Path(os.path.dirname(__file__)) / "icons" / "exporter.png"))
+        self.icon_aide = QIcon(str(Path(os.path.dirname(__file__)) / "icons" / "aide.png"))
 
         self.list_nom_btn_defaut = self.init_bouton_defaut()
 
@@ -135,8 +142,6 @@ class Vue:
 
     def run_at_startup(self):
         QTimer.singleShot(500, self.run)
-
-
 
     def initGui(self):
         QgsProject.instance().readProject.connect(self.run_at_startup)
@@ -166,10 +171,9 @@ class Vue:
         # pour sauvegarder la position dans le fichier pos.txt
         self.index = self.hlayout_vues.indexOf(bouton)
 
-        # sauvegarde de l'onglet actif pour gerer la suppression
+        # sauvegarde de l'onglet actif pour gérer la suppression
         self.onglet_actif = bouton.objectName()
         list_layer = self.get_layer_actif_in_vue(bouton.objectName())
-
 
         self.InitAspectOnglet()
         # bouton en vert
@@ -185,7 +189,7 @@ class Vue:
                 layer_tmp.loadNamedStyle(str(path_qml),categories=QgsMapLayer.StyleCategory.Symbology| QgsMapLayer.Labeling)
 
                 layer_tmp.triggerRepaint()
-            # pas de style pour le layer specifié (ou repertoire manquant)
+            # pas de style pour le layer spécifié (ou répertoire manquant)
             except AttributeError:
                 pass
 
@@ -284,12 +288,8 @@ class Vue:
         if self.onglet_actif is None:
             QMessageBox.warning(None,"Avertissement", "Pas d'onglet actif")
             return
-        # reponse = QMessageBox.warning(None, "Attention",
-        #                               f"Voulez vous vraiment supprimer l'onglet <br><b>{vue}<\b><\br> ?",
-        #                               QMessageBox.Yes | QMessageBox.No)
-        # if reponse == QMessageBox.No:
-        #     return
-        # suppression de l'onglet dans le xml --> juste pour gérer l'ordre d'affichage des vues
+
+        # suppression de l'onglet dans le xml → juste pour gérer l'ordre d'affichage des vues
         tree = ET.parse(Path(self.rep_vues, XML_VUES))
         root = tree.getroot()
         for vue_xml in root.findall('vue'):
@@ -312,7 +312,7 @@ class Vue:
         self.update_scroll_width()
 
     def on_deplace_onglet(self, sens):
-        # si des vues ne sont pas definis
+        # si des vues ne sont pas définis
         if not os.path.isfile(self.path_xml):
                 return
         # AUTRE APPROCHE
@@ -406,6 +406,24 @@ class Vue:
                 else:
                     self.on_change_vue(self.listbtn[0])
 
+    def on_exporter_vue(self):
+        dossier = QFileDialog.getExistingDirectory(None, "Choisissez un dossier de destination")
+        if dossier:
+            dst = os.path.join(dossier, "VUES")
+            shutil.copytree(self.get_dossier_vues(), dst,dirs_exist_ok=True) # copytree pour un dossier
+        else:
+            QMessageBox.warning(None, "Annulé", "Aucun dossier sélectionné.")
+
+
+    def on_aide(self):
+        dlgAProposDe = QDialog()
+        loadUi(os.path.dirname(__file__) + "/aproposde.ui", dlgAProposDe)
+        dlgAProposDe.setWindowFlags(WindowStaysOnTopHint | WindowCloseButtonHint)
+        dlgAProposDe.pushButtonAffichedoc.clicked.connect(self.afficheDoc)
+        dlgAProposDe.exec_()
+
+    def afficheDoc(self):
+        webbrowser.open("https://ignf.github.io/vues-qgis-plugin/")
 
     def on_modifie_vue(self):
         if self.onglet_actif is None:
@@ -415,11 +433,11 @@ class Vue:
 
         reponse = QMessageBox.warning(None, "Attention",
                                       f"Voulez vous vraiment appliquer la nouvelle vue à l'onglet <br><b>{self.onglet_actif}<\b><\br> ?",
-                                      QMessageBox.Yes | QMessageBox.No)
-        if reponse == QMessageBox.No:
+                                      Yes | No)
+        if reponse == No:
             return
 
-        if reponse == QMessageBox.Yes:
+        if reponse == Yes:
             # sauvegarde des styles de tous les layers ajoutés
             self.sauve_style_layer_visible()
 
@@ -449,7 +467,6 @@ class Vue:
     # creation du repertoire et sauvegarde des layers visibles dans le repertoire "symbologie
     # en fonction de l'onglet actif
     def sauve_style_layer_visible(self):
-        # TODO sauve_style_layer_visible
         rep = Path(self.rep_vues, self.onglet_actif)
         list_layer_visible = self.setlist_layer_visible()
         # Je supprime le repertoire avant de le recréer,
@@ -484,7 +501,6 @@ class Vue:
 
         tree.write(xml_path,encoding='utf-8', xml_declaration=True)
         return True
-
 
     def renomme(self, obj):
         dialinput = QInputDialog()
@@ -522,7 +538,6 @@ class Vue:
             if new_name == bouton.objectName():
                 bouton.setStyleSheet("background-color: #2ab51a ; font-weight: bold")
 
-
     def add_btn_all_vues(self):
         for onglet in self.list_vues:
             btn = QPushButton(onglet)
@@ -530,8 +545,6 @@ class Vue:
 
             btn.setContextMenuPolicy(CustomContextMenu)
             btn.customContextMenuRequested.connect(lambda pos, b=btn: self.on_show_menu_vue(pos, b))
-            # gestion clic droit → remplacé par le menu contextuel
-            # btn.installEventFilter(self.filter_clic_droit)
 
             btn.setObjectName(onglet)
             btn.setToolTip(btn.objectName())
@@ -546,7 +559,7 @@ class Vue:
             self.hlayout_vues.addWidget(btn)
             self.update_scroll_width()
 
-            # "_", ignore le parametre de remplacement pour le premier arguement de : clicked
+            # "_", ignore le paramètre de remplacement pour le premier argument de : clicked
             btn.clicked.connect(lambda _, bouton=btn: self.on_change_vue(bouton))
 
     # renvoi le layer specifié en fonction du nom
@@ -588,32 +601,33 @@ class Vue:
 
     def init_bouton_defaut(self):
         self.btn_plus = QPushButton(self.icon_plus, None)
-        # self.btn_moins = QPushButton(self.icon_moins, None)
         self.btn_droit = QPushButton(self.icon_fleche_droite, None)
         self.btn_gauche = QPushButton(self.icon_fleche_gauche, None)
-        self.btn_modifie = QPushButton(self.icon_modfie, None)
+        self.btn_modifie = QPushButton(self.icon_modifier, None)
         self.btn_importer = QPushButton(self.icon_importer, None)
+        self.btn_exporter = QPushButton(self.icon_exporter, None)
+        self.btn_aide = QPushButton(self.icon_aide, None)
+
         self.btn_plus.setObjectName("plus")
-        # self.btn_moins.setObjectName("moins")
         self.btn_droit.setObjectName("droite")
         self.btn_gauche.setObjectName("gauche")
         self.btn_modifie.setObjectName("modifie")
         self.btn_importer.setObjectName("importer")
+        self.btn_exporter.setObjectName("exporter")
+        self.btn_aide.setObjectName("aide")
+
         self.btn_plus.setFixedHeight(HAUTEUR_BTN)
-        # self.btn_moins.setFixedHeight(HAUTEUR_BTN)
         self.btn_droit.setFixedHeight(HAUTEUR_BTN)
         self.btn_gauche.setFixedHeight(HAUTEUR_BTN)
         self.btn_modifie.setFixedHeight(HAUTEUR_BTN)
         self.btn_importer.setFixedHeight(HAUTEUR_BTN)
+        self.btn_exporter.setFixedHeight(HAUTEUR_BTN)
+        self.btn_aide.setFixedHeight(HAUTEUR_BTN)
 
-        self.list_bouton_defaut = [self.btn_plus,
-                                   # self.btn_moins,
-                                   self.btn_gauche,self.btn_droit,self.btn_modifie,self.btn_importer]
+        self.list_bouton_defaut = [self.btn_plus,self.btn_gauche,self.btn_droit,self.btn_modifie,self.btn_importer,self.btn_exporter,self.btn_aide]
 
         self.btn_plus.clicked.connect(self.on_ajout_onglet)
         self.btn_plus.setToolTip("Ajouter un onglet")
-        # self.btn_moins.clicked.connect(lambda :self.on_suppr_vue(self.onglet_actif))
-        # self.btn_moins.setToolTip("Supprimer un onglet")
         self.btn_modifie.clicked.connect(self.on_modifie_vue)
         self.btn_modifie.setToolTip("Modifier la symbologie de l'onglet actif")
         self.btn_droit.clicked.connect(lambda _, sens="DROITE": self.on_deplace_onglet(sens))
@@ -622,11 +636,18 @@ class Vue:
         self.btn_gauche.setToolTip("Déplacer l'onglet actif vers la gauche")
         self.btn_importer.clicked.connect(self.on_importer_vue)
         self.btn_importer.setToolTip("Importer une vue")
+        self.btn_exporter.clicked.connect(self.on_exporter_vue)
+        self.btn_exporter.setToolTip("Exporter une vue")
+        self.btn_aide.clicked.connect(self.on_aide)
+        self.btn_aide.setToolTip("Afficher l'aide")
 
         self.list_nom_btn_defaut = [self.btn_plus.objectName(),
-                                    # self.btn_moins.objectName(),
                                     self.btn_droit.objectName(),
-                           self.btn_gauche.objectName(), self.btn_modifie.objectName(),self.btn_importer.objectName()]
+                                    self.btn_gauche.objectName(),
+                                    self.btn_modifie.objectName(),
+                                    self.btn_importer.objectName(),
+                                    self.btn_exporter.objectName(),
+                                    self.btn_aide.objectName()]
         return self.list_nom_btn_defaut
 
     def add_bouton_defaut(self):
