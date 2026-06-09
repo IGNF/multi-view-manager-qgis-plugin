@@ -1,12 +1,23 @@
-# Plugin QGis Vues
+<table>
+<colgroup>
+<col style="width: 21%" /><col style="width: 78%" />
+</colgroup>
+<tbody>
+<tr>
+<td rowspan="2">
+  <img src="images/image0.jpg"
+  style="width:1.38681in;height:1.47153in" alt="logo_IGN_pour_lettre" />
+</td>
 
-## Version 1.4.3 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 16/03/2026 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; IGN - DTSO 
+<td style="text-align: center; font-size: 24px;"><strong>Plugin Vues v1.4.3</strong>
+</td>
+</tr>
 
-<div  style="text-align: left;"> 
-	<img  src="images/Image0.jpg"  height = 110/> 
-</div>
-
-<hr style="border-color:  #98BF18; "/>
+<tr>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
 
 <div  style="background-color: white; border: 1px solid black; padding: 10px; text-align: justify;">
   <h2 style="color: #00ADC5">Sommaire</h2>
