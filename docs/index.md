@@ -10,8 +10,8 @@
 <td rowspan="2"><img src="images/Image0.jpg"
 style="width:1.38681in;height:1.47153in"
 alt="logo_IGN_pour_lettre" /></td>
-<td style="font-size: 24px;text-align: center;"><p><strong>Plugin Vues</strong></p>
-<p><strong>V1.4.3</strong></p></td>
+<td style="font-size: 24px;text-align: center;"><p><strong>Plugin MultiViewManager</strong></p>
+<p><strong>V1.4.4</strong></p></td>
 </tr>
 <tr>
 <td style="font-size: 16px;text-align: center;">Développeur  : Gérôme PECHEUR (IGN)</td>
