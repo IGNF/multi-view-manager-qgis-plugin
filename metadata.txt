@@ -3,20 +3,20 @@
 # This file should be included when you package your plugin.# Mandatory items:
 
 [general]
-name=IGN Vues
+name=MultiViewManager
 qgisMinimumVersion=3.0
 qgisMaximumVersion=4.99
 description=Gestionnaire de vues
-version=1.4.3
+version=1.4.4
 author=Gérôme PECHEUR (IGN)
 email=gerome.pecheur@ign.fr
 license=GNU AGPL v3
 
 about=Ce gestionnaire permet de passer d'une vue à une autre, d'en ajouter, d'en supprimer et de les organiser
 
-tracker=https://github.com/IGNF/vues-qgis-plugin/issues
-repository=https://github.com/IGNF/vues-qgis-plugin
-homepage=https://ignf.github.io/vues-qgis-plugin/
+tracker=https://github.com/IGNF/MultiViewManager/issues
+repository=https://github.com/IGNF/MultiViewManager
+homepage=https://ignf.github.io/MultiViewManager/
 # End of mandatory metadata
 
 # Recommended items:

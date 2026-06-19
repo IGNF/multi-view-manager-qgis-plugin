@@ -1,4 +1,4 @@
-# vues-plugin-qgis
+# MultiViewManager
 
 Vue is a python plugin for view management integrated in the QGIS status bar.
 
@@ -24,11 +24,11 @@ English :
 
 - Mainteneur principal : gerome.pecheur@ign.fr
 - Organisation : [IGNF](https://github.com/IGNF)
-- Issues GitHub : https://github.com/IGNF/vues-qgis-plugin/issues
+- Issues GitHub : https://github.com/IGNF/MultiViewManager/issues
 
 ## Ressources
 
-Documentation : https://ignf.github.io/vues-qgis-plugin/
+Documentation : https://ignf.github.io/MultiViewManager/
 
 ## Licence
 
