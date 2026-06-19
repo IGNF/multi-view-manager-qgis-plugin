@@ -44,14 +44,14 @@ Version de QGIS 3 : 3.28 ou supérieure.
   <h2 id="resume" style="color: white;margin:0;">2. Résumé</h2>
 </div>  
 
-Le plugin Vues permet de sauvegarder le style et les visibilités des couches du projet actif dans la barre d’état de QGis sous forme d’onglets.  
+Le plugin MultiViewManager permet de sauvegarder le style et les visibilités des couches du projet actif dans la barre d’état de QGis sous forme d’onglets.  
 Il permet aussi de supprimer ces vues, de les modifier et de les organiser.  
   
 <div  style="background-color: #00ADC5; border: 1px solid black; padding: 5px; text-align: justify;margin-bottom:10px;">
   <h2 id="installation" style="color: white;margin:0;">3. Installation</h2>
 </div>  
 
-Le plugin Vues s’installe avec l’exécutable d’installation.  
+Le plugin MultiViewManager s’installe avec l’exécutable d’installation.  
   
 <div  style="background-color: #00ADC5; border: 1px solid black; padding: 5px; text-align: justify;margin-bottom:10px;">
   <h2 id="presentation" style="color: white;margin:0;">4. Présentation</h2>
@@ -65,7 +65,7 @@ Le plugin Vues s’installe avec l’exécutable d’installation.
 		<img  src="images/Image2.jpg"  style="vertical-align: middle;" />
 </div>  
 
-Le plugin Vues se lance dans le menu IGN ou en cliquant sur l’icône représentant un œil dans la barre d’outils selon le choix enregistré dans le plugin Maitre.  
+Le plugin MultiViewManager se lance dans le menu IGN ou en cliquant sur l’icône représentant un œil dans la barre d’outils selon le choix enregistré dans le plugin Maitre.  
 
 
 <div  style="font-size: 10px;background-color: #00ADC5; border: 1px solid black; padding: 5px; text-align: justify;margin-bottom:10px;">
