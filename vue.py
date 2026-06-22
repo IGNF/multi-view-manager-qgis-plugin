@@ -25,7 +25,7 @@ import webbrowser
 
 from qgis.PyQt.QtCore import  QTimer
 from qgis.PyQt.QtGui import QFontMetrics,QIcon
-from qgis.PyQt.QtWidgets import QPushButton, QHBoxLayout, QWidget, QScrollArea, QMenu,QInputDialog,QMessageBox
+from qgis.PyQt.QtWidgets import QPushButton, QHBoxLayout, QWidget, QScrollArea, QMenu,QInputDialog
 
 from qgis.core import QgsProject,QgsMapLayer
 
@@ -34,7 +34,9 @@ from .dlg_import import *
 from .mapping_version import *
 
 from copy import copy
-import xml.etree.ElementTree as ET
+
+from defusedxml import ElementTree as ET
+
 import os
 import shutil
 
