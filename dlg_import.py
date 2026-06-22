@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 
 from qgis.PyQt.QtGui import QFont
-from qgis.PyQt.QtWidgets import QDialog, QListWidgetItem
+from qgis.PyQt.QtWidgets import  QListWidgetItem
 from qgis.PyQt.uic import loadUi
 
 from .mapping_version import *
