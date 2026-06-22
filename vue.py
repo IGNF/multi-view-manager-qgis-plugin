@@ -411,7 +411,7 @@ class Vue:
         dlgAProposDe.exec_()
 
     def afficheDoc(self):
-        webbrowser.open("https://ignf.github.io/MultiViewManager/")
+        webbrowser.open("https://ignf.github.io/multi-view-manager-qgis-plugin/")
 
     def on_modifie_vue(self):
         if self.onglet_actif is None:
