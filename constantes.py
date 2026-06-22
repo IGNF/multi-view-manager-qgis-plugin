@@ -12,3 +12,17 @@ VUE_DEFAUT = "courant"
 LIST_VUES_QGIS_A_GARDER = ["mOntheFlyProjectionStatusButton","mScaleWidget",
                            "mCoordsEdit","mRotationLabel","mRotationEdit",
                            "mRenderSuppressionCBox","mMagnifierWidget","mMessageLogViewerButton"]
+
+STYLE_SCROLLER = """
+            QScrollArea {
+                border: none;             
+                background: transparent;
+            }
+            QScrollBar:horizontal {
+                background: #f0f0f0;         
+                height: 8px
+            }
+            QScrollBar::handle:horizontal {
+                background: #777777;             
+            }
+        """

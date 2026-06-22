@@ -16,7 +16,7 @@ about=Ce gestionnaire permet de passer d'une vue à une autre, d'en ajouter, d'e
 
 tracker=https://github.com/IGNF/MultiViewManager/issues
 repository=https://github.com/IGNF/MultiViewManager
-homepage=https://ignf.github.io/MultiViewManager/
+homepage=https://ignf.github.io/multi-view-manager-qgis-plugin/
 # End of mandatory metadata
 
 # Recommended items:

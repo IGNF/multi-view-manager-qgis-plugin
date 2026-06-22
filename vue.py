@@ -79,19 +79,7 @@ class Vue:
         self.scroll.setHorizontalScrollBarPolicy(ScrollBarAsNeeded)
         self.scroll.setWidgetResizable(True)
         self.scroll.setSizePolicy(Expanding, Fixed)
-        self.scroll.setStyleSheet("""
-            QScrollArea {
-                border: none;             
-                background: transparent;
-            }
-            QScrollBar:horizontal {
-                background: #f0f0f0;         
-                height: 8px
-            }
-            QScrollBar::handle:horizontal {
-                background: #777777;             
-            }
-        """)
+        self.scroll.setStyleSheet(STYLE_SCROLLER)
 
         # Widget interne qui contient le layout des boutons vues
         self.container_vues = QWidget()
@@ -153,18 +141,18 @@ class Vue:
         # Supprime container_defaut
         try:
             self.status_bar.removeWidget(self.container_defaut)
-        except Exception:
-            pass
+        except Exception as e:
+            print(f"Impossible de supprimer le widget : {e}")
         # Supprime scroll
         try:
             self.status_bar.removeWidget(self.scroll)
-        except Exception:
-            pass
+        except Exception as e:
+            print(f"Impossible de supprimer le widget : {e}")
         # Supprime éventuellement la ligne de séparation
         try:
             self.status_bar.removeWidget(self.line)
-        except Exception:
-            pass
+        except Exception as e:
+            print(f"Impossible de supprimer le widget : {e}")
 
     def on_change_vue(self, bouton):
         # recuperation de la position de la vue active dans le layout
@@ -423,7 +411,7 @@ class Vue:
         dlgAProposDe.exec_()
 
     def afficheDoc(self):
-        webbrowser.open("https://ignf.github.io/MultiViewManager/")
+        webbrowser.open("https://ignf.github.io/multi-view-manager-qgis-plugin/")
 
     def on_modifie_vue(self):
         if self.onglet_actif is None:

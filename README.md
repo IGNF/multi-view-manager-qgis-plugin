@@ -28,7 +28,7 @@ English :
 
 ## Ressources
 
-Documentation : https://ignf.github.io/MultiViewManager/
+Documentation : https://ignf.github.io/multi-view-manager-qgis-plugin/
 
 ## Licence
 
