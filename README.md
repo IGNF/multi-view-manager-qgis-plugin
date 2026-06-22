@@ -1,6 +1,6 @@
 # MultiViewManager
 
-Vue is a python plugin for view management integrated in the QGIS status bar.
+MultiViewManager is a python plugin for view management integrated in the QGIS status bar.
 
 ## Pré-requis
 
