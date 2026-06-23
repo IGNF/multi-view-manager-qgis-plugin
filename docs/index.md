@@ -23,14 +23,12 @@ alt="logo_IGN_pour_lettre" /></td>
 - [2. Résumé](#resume)
 - [3. Installation](#installation)
 - [4. Présentation](#presentation)
-  - [4.1 Lancement du plugin](#lancement-du-plugin)
-  - [4.2 Fonctionnalités](#fonctionnalites)
-    - [4.2.1 Ajouter une vue](#ajouter-une-vue)
-    - [4.2.2 Supprimer une vue](#supprimer-une-vue)
-    - [4.2.3 Renommer une vue](#renommer-une-vue)
-    - [4.2.4 Déplacer un onglet vue](#deplacer-un-onglet-vue)
-    - [4.2.5 Modifier une vue](#modifier-une-vue)
-    - [4.2.6 Importer une vue](#importer-une-vue)  
+    - [4.1 Ajouter une vue](#ajouter-une-vue)
+    - [4.2 Supprimer une vue](#supprimer-une-vue)
+    - [4.3 Renommer une vue](#renommer-une-vue)
+    - [4.4 Déplacer un onglet vue](#deplacer-un-onglet-vue)
+    - [4.5 Modifier une vue](#modifier-une-vue)
+    - [4.6 Importer une vue](#importer-une-vue)  
 
   
 <div  style="background-color: #00ADC5; border: 1px solid black; padding: 5px; text-align: justify;margin-bottom:10px;">
@@ -56,27 +54,16 @@ Le plugin MultiViewManager s’installe avec l’exécutable d’installation.
 <div  style="background-color: #00ADC5; border: 1px solid black; padding: 5px; text-align: justify;margin-bottom:10px;">
   <h2 id="presentation" style="color: white;margin:0;">4. Présentation</h2>
 </div>  
-  
-<div  style="font-size: 10px;background-color: #00ADC5; border: 1px solid black; padding: 5px; text-align: justify;margin-bottom:10px;">
-  <h2 id="lancement-du-plugin" style="color: white;margin:0;" >4.1 Lancement du plugin</h2>
-</div>
-<div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
-		<img  src="images/Image1.png"  style="vertical-align: middle;" />  
-		<img  src="images/Image2.jpg"  style="vertical-align: middle;" />
-</div>  
 
-Le plugin MultiViewManager se lance dans le menu IGN ou en cliquant sur l’icône représentant un œil dans la barre d’outils selon le choix enregistré dans le plugin Maitre.  
+Ce Plugin se lance dés le chargement d'un projet.
+Il se place dans la barre d'état
 
-
-<div  style="font-size: 10px;background-color: #00ADC5; border: 1px solid black; padding: 5px; text-align: justify;margin-bottom:10px;">
-  <h2 id="fonctionnalites" style="color: white;margin:0;" >4.2 Fonctionnalités</h2>
-</div>
 <div  style="text-align: center;"> 
 	<img  src="images/Image3.jpg" />
 </div>  
   
 <div  style="font-size: 10px;background-color: #00ADC5; border: 1px solid black; padding: 5px; text-align: justify;margin-bottom:10px;">
-  <h2 id="ajouter-une-vue" style="color: white;margin:0;" >4.2.1 Ajouter une vue</h2>
+  <h2 id="ajouter-une-vue" style="color: white;margin:0;" >4.1 Ajouter une vue</h2>
 </div>
 
 -	Modifier les styles des couches du projet selon le rendu désiré.    
@@ -84,14 +71,14 @@ Le plugin MultiViewManager se lance dans le menu IGN ou en cliquant sur l’icô
 -	Entrer le nom de la vue.  
   
 <div  style="font-size: 10px;background-color: #00ADC5; border: 1px solid black; padding: 5px; text-align: justify;margin-bottom:10px;">
-  <h2 id="supprimer-une-vue" style="color: white;margin:0;" >4.2.2 Supprimer une vue</h2>
+  <h2 id="supprimer-une-vue" style="color: white;margin:0;" >4.2 Supprimer une vue</h2>
 </div>
 
 -	Clic droit sur l’onglet vue à supprimer  
 -	![Image5](images/Image5.png)  
 
 <div  style="font-size: 10px;background-color: #00ADC5; border: 1px solid black; padding: 5px; text-align: justify;margin-bottom:10px;">
-  <h2 id="renommer-une-vue" style="color: white;margin:0;" >4.2.3 Renommer une vue</h2>
+  <h2 id="renommer-une-vue" style="color: white;margin:0;" >4.3 Renommer une vue</h2>
 </div>
 
 - Clic droit sur l’onglet vue à renommer  
@@ -99,7 +86,7 @@ Le plugin MultiViewManager se lance dans le menu IGN ou en cliquant sur l’icô
 - Saisir le nouveau nom et confirmer avec le bouton OK  
   
 <div  style="font-size: 10px;background-color: #00ADC5; border: 1px solid black; padding: 5px; text-align: justify;margin-bottom:10px;">
-  <h2 id="deplacer-un-onglet-vue" style="color: white;margin:0;" >4.2.4 Déplacer un onglet vue</h2>
+  <h2 id="deplacer-un-onglet-vue" style="color: white;margin:0;" >4.4 Déplacer un onglet vue</h2>
 </div>
 
 - Sélectionner l’onglet de la vue à déplacer. Il apparaît en vert.  
@@ -107,7 +94,7 @@ Le plugin MultiViewManager se lance dans le menu IGN ou en cliquant sur l’icô
 
   
 <div  style="font-size: 10px;background-color: #00ADC5; border: 1px solid black; padding: 5px; text-align: justify;margin-bottom:10px;">
-  <h2 id="modifier-une-vue" style="color: white;margin:0;" >4.2.5 Modifier une vue</h2>
+  <h2 id="modifier-une-vue" style="color: white;margin:0;" >4.5 Modifier une vue</h2>
 </div>
 
 - Sélectionner l’onglet de la vue à modifier. Il apparaît en vert.  
@@ -116,7 +103,7 @@ Le plugin MultiViewManager se lance dans le menu IGN ou en cliquant sur l’icô
   
 
 <div  style="font-size: 10px;background-color: #00ADC5; border: 1px solid black; padding: 5px; text-align: justify;margin-bottom:10px;">
-  <h2 id="importer-une-vue" style="color: white;margin:0;" >4.2.6 Importer une vue</h2>
+  <h2 id="importer-une-vue" style="color: white;margin:0;" >4.6 Importer une vue</h2>
 </div>
 
 La création de vues avec ce plugin crée un répertoire VUES à la racine du projet.  
