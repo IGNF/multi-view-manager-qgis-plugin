@@ -12,7 +12,7 @@ author=Gérôme PECHEUR (IGN)
 email=gerome.pecheur@ign.fr
 license=GNU AGPL v3
 
-about=Ce gestionnaire permet de passer d'une vue à une autre, d'en ajouter, d'en supprimer et de les organiser
+about=This manager allows you to switch between views, add new ones, delete them, and organize them.
 
 tracker=https://github.com/IGNF/MultiViewManager/issues
 repository=https://github.com/IGNF/MultiViewManager
