@@ -21,14 +21,13 @@ alt="logo_IGN_pour_lettre" /></td>
 
 - [1. Prérequis](#prerequis)
 - [2. Résumé](#resume)
-- [3. Installation](#installation)
-- [4. Présentation](#presentation)
-    - [4.1 Ajouter une vue](#ajouter-une-vue)
-    - [4.2 Supprimer une vue](#supprimer-une-vue)
-    - [4.3 Renommer une vue](#renommer-une-vue)
-    - [4.4 Déplacer un onglet vue](#deplacer-un-onglet-vue)
-    - [4.5 Modifier une vue](#modifier-une-vue)
-    - [4.6 Importer une vue](#importer-une-vue)  
+- [3. Présentation](#presentation)
+    - [3.1 Ajouter une vue](#ajouter-une-vue)
+    - [3.2 Supprimer une vue](#supprimer-une-vue)
+    - [3.3 Renommer une vue](#renommer-une-vue)
+    - [3.4 Déplacer un onglet vue](#deplacer-un-onglet-vue)
+    - [3.5 Modifier une vue](#modifier-une-vue)
+    - [3.6 Importer une vue](#importer-une-vue)  
 
   
 <div  style="background-color: #00ADC5; border: 1px solid black; padding: 5px; text-align: justify;margin-bottom:10px;">
@@ -44,15 +43,10 @@ Version de QGIS 3 : 3.28 ou supérieure.
 
 Le plugin MultiViewManager permet de sauvegarder le style et les visibilités des couches du projet actif dans la barre d’état de QGis sous forme d’onglets.  
 Il permet aussi de supprimer ces vues, de les modifier et de les organiser.  
-  
-<div  style="background-color: #00ADC5; border: 1px solid black; padding: 5px; text-align: justify;margin-bottom:10px;">
-  <h2 id="installation" style="color: white;margin:0;">3. Installation</h2>
-</div>  
 
-Le plugin MultiViewManager s’installe avec l’exécutable d’installation.  
   
 <div  style="background-color: #00ADC5; border: 1px solid black; padding: 5px; text-align: justify;margin-bottom:10px;">
-  <h2 id="presentation" style="color: white;margin:0;">4. Présentation</h2>
+  <h2 id="presentation" style="color: white;margin:0;">3. Présentation</h2>
 </div>  
 
 Ce Plugin se lance dés le chargement d'un projet.
@@ -63,7 +57,7 @@ Il se place dans la barre d'état
 </div>  
   
 <div  style="font-size: 10px;background-color: #00ADC5; border: 1px solid black; padding: 5px; text-align: justify;margin-bottom:10px;">
-  <h2 id="ajouter-une-vue" style="color: white;margin:0;" >4.1 Ajouter une vue</h2>
+  <h2 id="ajouter-une-vue" style="color: white;margin:0;" >3.1 Ajouter une vue</h2>
 </div>
 
 -	Modifier les styles des couches du projet selon le rendu désiré.    
@@ -71,14 +65,14 @@ Il se place dans la barre d'état
 -	Entrer le nom de la vue.  
   
 <div  style="font-size: 10px;background-color: #00ADC5; border: 1px solid black; padding: 5px; text-align: justify;margin-bottom:10px;">
-  <h2 id="supprimer-une-vue" style="color: white;margin:0;" >4.2 Supprimer une vue</h2>
+  <h2 id="supprimer-une-vue" style="color: white;margin:0;" >3.2 Supprimer une vue</h2>
 </div>
 
 -	Clic droit sur l’onglet vue à supprimer  
 -	![Image5](images/Image5.png)  
 
 <div  style="font-size: 10px;background-color: #00ADC5; border: 1px solid black; padding: 5px; text-align: justify;margin-bottom:10px;">
-  <h2 id="renommer-une-vue" style="color: white;margin:0;" >4.3 Renommer une vue</h2>
+  <h2 id="renommer-une-vue" style="color: white;margin:0;" >3.3 Renommer une vue</h2>
 </div>
 
 - Clic droit sur l’onglet vue à renommer  
@@ -86,7 +80,7 @@ Il se place dans la barre d'état
 - Saisir le nouveau nom et confirmer avec le bouton OK  
   
 <div  style="font-size: 10px;background-color: #00ADC5; border: 1px solid black; padding: 5px; text-align: justify;margin-bottom:10px;">
-  <h2 id="deplacer-un-onglet-vue" style="color: white;margin:0;" >4.4 Déplacer un onglet vue</h2>
+  <h2 id="deplacer-un-onglet-vue" style="color: white;margin:0;" >3.4 Déplacer un onglet vue</h2>
 </div>
 
 - Sélectionner l’onglet de la vue à déplacer. Il apparaît en vert.  
@@ -94,7 +88,7 @@ Il se place dans la barre d'état
 
   
 <div  style="font-size: 10px;background-color: #00ADC5; border: 1px solid black; padding: 5px; text-align: justify;margin-bottom:10px;">
-  <h2 id="modifier-une-vue" style="color: white;margin:0;" >4.5 Modifier une vue</h2>
+  <h2 id="modifier-une-vue" style="color: white;margin:0;" >3.5 Modifier une vue</h2>
 </div>
 
 - Sélectionner l’onglet de la vue à modifier. Il apparaît en vert.  
@@ -103,7 +97,7 @@ Il se place dans la barre d'état
   
 
 <div  style="font-size: 10px;background-color: #00ADC5; border: 1px solid black; padding: 5px; text-align: justify;margin-bottom:10px;">
-  <h2 id="importer-une-vue" style="color: white;margin:0;" >4.6 Importer une vue</h2>
+  <h2 id="importer-une-vue" style="color: white;margin:0;" >3.6 Importer une vue</h2>
 </div>
 
 La création de vues avec ce plugin crée un répertoire VUES à la racine du projet.  
