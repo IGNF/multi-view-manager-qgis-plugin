@@ -1,12 +1,9 @@
 import os
 from pathlib import Path
-
 from qgis.PyQt.QtGui import QFont
 from qgis.PyQt.QtWidgets import  QListWidgetItem
 from qgis.PyQt.uic import loadUi
-
 from .mapping_version import *
-
 
 class DialogImport(QDialog):
     def __init__(self,parent=None):
@@ -22,7 +19,7 @@ class DialogImport(QDialog):
 
     def ini_list_view(self,list_vues):
         for vue_absolu in list_vues:
-            vue  = os.path.basename(vue_absolu)
+            vue = os.path.basename(vue_absolu)
             item = QListWidgetItem(vue)
             font = QFont()
             font.setPointSize(10)
@@ -47,7 +44,6 @@ class DialogImport(QDialog):
             else:
                 item.setCheckState(Checked)
         self.tout_coche = not self.tout_coche
-
 
     def importer(self):
         self.get_vues_a_importer()
