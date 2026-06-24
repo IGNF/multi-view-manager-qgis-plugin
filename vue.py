@@ -676,22 +676,43 @@ class Vue:
                 return
 
     def init_arborescence(self):
-        retour = False
-        if not os.path.exists(self.rep_vues):
-            os.mkdir(self.rep_vues)
-            os.mkdir(Path(self.rep_vues, VUE_DEFAUT))
-            with open(Path(self.rep_vues, FIC_POS), "w") as f:
-                f.write("0")  # position de l'onglet actif (0 par defaut)
-            retour = True
-        if not os.path.isfile(Path(self.rep_vues, XML_VUES)):
-            with open(Path(self.rep_vues, XML_VUES), "w", encoding="utf-8") as f:
-                # initialisation de la structure du xml
-                root = ET.Element("vues")
-                tree = ET.ElementTree(root)
-                tree.write(Path(self.rep_vues, XML_VUES),
-                           encoding="utf-8", xml_declaration=True)
-                retour = True
-        return retour
+        created = False
+        rep_vues = Path(self.rep_vues)
+        if not rep_vues.exists():
+            rep_vues.mkdir()
+            (rep_vues / VUE_DEFAUT).mkdir()
+            with open(rep_vues / FIC_POS, "w", encoding="utf-8") as f:
+                f.write("0")
+            created = True
+        xml_file = rep_vues / XML_VUES
+        if not xml_file.exists():
+            root = ET.Element("vues")
+            tree = ET.ElementTree(root)
+            tree.write(
+                xml_file,
+                encoding="utf-8",
+                xml_declaration=True
+            )
+            created = True
+        return created
+
+    # def init_arborescence(self):
+    #     retour = False
+    #     if not os.path.exists(self.rep_vues):
+    #         os.mkdir(self.rep_vues)
+    #         os.mkdir(Path(self.rep_vues, VUE_DEFAUT))
+    #         with open(Path(self.rep_vues, FIC_POS), "w") as f:
+    #             f.write("0")  # position de l'onglet actif (0 par defaut)
+    #         retour = True
+    #     if not os.path.isfile(Path(self.rep_vues, XML_VUES)):
+    #         with open(Path(self.rep_vues, XML_VUES), "w", encoding="utf-8") as f:
+    #             # initialisation de la structure du xml
+    #             root = ET.Element("vues")
+    #             tree = ET.ElementTree(root)
+    #             tree.write(Path(self.rep_vues, XML_VUES),
+    #                        encoding="utf-8", xml_declaration=True)
+    #             retour = True
+    #     return retour
 
     def update_scroll_width(self):
         # Largeur cumulée des boutons + spacing du layout
