@@ -10,7 +10,7 @@
         git sha              : $Format:%H$
         copyright            : (C) 2024 by Gérôme PECHEUR
         email                : gerome.pecheur@ign.fr
- ***************************************************************************/
+***************************************************************************/
 
 /***************************************************************************
  *                                                                         *
@@ -35,7 +35,8 @@ from .mapping_version import *
 
 from copy import copy
 
-from defusedxml import ElementTree as ET
+import xml.etree.ElementTree as ET # nosec B405
+from defusedxml.ElementTree import parse
 
 import os
 import shutil
@@ -209,7 +210,7 @@ class Vue:
     # retourne la liste de toutes les vues
     def get_name_all_vues(self):
         # lecture à partir du xml pour récupérer l'ordre d'affichage des vues
-        tree = ET.parse(Path(self.rep_vues, XML_VUES))
+        tree = parse(Path(self.rep_vues, XML_VUES))
         root = tree.getroot()
         list_onglet = []
         for vue in root.findall("vue"):
@@ -280,7 +281,7 @@ class Vue:
             return
 
         # suppression de l'onglet dans le xml → juste pour gérer l'ordre d'affichage des vues
-        tree = ET.parse(Path(self.rep_vues, XML_VUES))
+        tree = parse(Path(self.rep_vues, XML_VUES))
         root = tree.getroot()
         for vue_xml in root.findall('vue'):
             if vue_xml.get('id') == vue:
@@ -307,7 +308,7 @@ class Vue:
                 return
         # AUTRE APPROCHE
         # on reorganise le xml en déplaçant l'ordre des vues
-        tree = ET.parse(self.path_xml)
+        tree = parse(self.path_xml)
         root = tree.getroot()
         index = 0
         for vue in root.findall('vue'):
@@ -477,7 +478,7 @@ class Vue:
         # recuperation des layer visible de qgis
         xml_path = Path(self.rep_vues, XML_VUES)
         self.onglet_actif = onglet
-        tree = ET.parse(xml_path)
+        tree = parse(xml_path)
         root = tree.getroot()
 
         for v in root.findall('vue'):
@@ -505,7 +506,7 @@ class Vue:
             return
 
         # 1: renommer l'onglet dans le xml
-        tree = ET.parse(Path(self.rep_vues, XML_VUES))
+        tree = parse(Path(self.rep_vues, XML_VUES))
         root = tree.getroot()
         for vue in root.findall("vue"):
             if vue.get("id") == obj.objectName():
