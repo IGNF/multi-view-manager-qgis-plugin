@@ -36,7 +36,8 @@ from .mapping_version import *
 from copy import copy
 
 import xml.etree.ElementTree as ET # nosec B405
-from defusedxml.ElementTree import parse
+# prise en compte du package en local
+from .defusedxml.ElementTree import parse
 
 import os
 import shutil
